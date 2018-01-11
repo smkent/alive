@@ -1,0 +1,24 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+name = "pypi"
+verify_ssl = true
+
+
+[requires]
+
+python_version = "3.5"
+
+
+[packages]
+
+python-gnupg = "*"
+python-twitter = "*"
+pytz = "*"
+pyyaml = "*"
+tzlocal = "*"
+
+
+
+[dev-packages]
+

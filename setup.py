@@ -7,7 +7,8 @@ setup(
     install_requires=[],
     entry_points={
         'console_scripts': [
-            'alive = main:main'
+            'alive = alive.main:main',
+            'alive-check = alive.main:check',
         ]
     },
 )
