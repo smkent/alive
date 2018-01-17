@@ -1,3 +1,7 @@
+from .periodic_test import PeriodicTest
 from .twitter import Twitter
 
-SOURCES = [Twitter]
+SOURCES = [
+    PeriodicTest,
+    Twitter,
+]
