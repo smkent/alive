@@ -17,7 +17,9 @@ class Twitter(Source):
         self._twitter = None
         if 'twitter' not in self.config or not self.config.twitter:
             raise Exception('No Twitter configuration is present')
-        self.username = self.config.twitter.get('username')
+        self.usernames = self.config.twitter.get('username')
+        if isinstance(self.usernames, str):
+            self.usernames = [self.usernames]
         self.keyword = self.config.twitter.get('keyword', DEFAULT_KEYWORD)
 
     @property
@@ -34,13 +36,14 @@ class Twitter(Source):
         return self._twitter
 
     def check(self):
-        tweets = self._client.GetUserTimeline(screen_name=self.username,
-                                              count=MAX_TWEETS)
-
-        for tweet in tweets:
+        tweets = []
+        for username in self.usernames:
+            tweets += self._client.GetUserTimeline(screen_name=username,
+                                                   count=MAX_TWEETS)
+        for tweet in sorted(tweets, key=lambda x: x.created_at_in_seconds):
             if tweet.created_at_in_seconds <= self._last_checked:
                 continue
-            if tweet.user.screen_name.lower() != self.username.lower():
+            if tweet.user.screen_name.lower() != username.lower():
                 continue
 
             tweet_keyword, tweet_action = tweet.full_text.split(' ', 1)
