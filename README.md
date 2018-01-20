@@ -6,7 +6,7 @@ tweets a particular message.
 I wrote this to provide an easy way to notify several people at once that I am
 safe in the event I survive a natural disaster. Following such an event, it is
 likely that network access may be disrupted or severely limited. This tool
-allows sending an email by specific message, which itself can be
+allows sending an email by tweeting a specific message, which itself can be
 created by simply texting the desired message to Twitter's shortcode.
 
 I chose this architecture as text messages are one of, if not the lowest
