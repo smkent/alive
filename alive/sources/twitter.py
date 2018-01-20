@@ -47,10 +47,7 @@ class Twitter(Source):
                 continue
 
             tweet_keyword, tweet_action = tweet.full_text.split(' ', 1)
-            keyword_variants = [fmt.format(self.keyword) for fmt in
-                                ['{}', '{}:', '[{}]',
-                                 '[{}]:', '({})', '({}):']]
-            if tweet_keyword not in keyword_variants:
+            if tweet_keyword.strip().lower() != self.keyword:
                 continue
             is_test = (tweet_action and
                        tweet_action.split()[0].lower() == 'test')
