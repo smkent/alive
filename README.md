@@ -69,7 +69,7 @@ alive stores its configuration by default in `~/.alive/config.yaml`. Start by
 adding the desired outgoing message configuration:
 
 File: `~/.alive/config.yaml`
-```
+```yaml
 email:
   from: 'Alice <alice@example.com>'
   to:
@@ -103,7 +103,7 @@ After obtaining Twitter API access, add the following settings to the
 configuration file:
 
 File: `~/.alive/config.yaml`
-```
+```yaml
 twitter:
   username: your-twitter-username
   consumer_key: (Twitter API consumer key)
@@ -122,7 +122,7 @@ verify the system is still working properly. This can be disabled (or the
 interval changed) by adding the following configuration:
 
 File: `~/.alive/config.yaml`
-```
+```yaml
 periodic_test:
   enabled: False   # Enable or disable sending periodic test messages
   interval: 86400  # Minimum number of seconds between test messages
