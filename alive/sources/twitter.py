@@ -18,6 +18,8 @@ class Twitter(Source):
         if 'twitter' not in self.config or not self.config.twitter:
             raise Exception('No Twitter configuration is present')
         self.usernames = self._list(self.config.twitter.get('username'))
+        if not self.usernames:
+            raise Exception('No Twitter username(s) are configured')
         self.keywords = [
             keyword.strip().lower() for keyword in
             self._list(self.config.twitter.get('keyword', DEFAULT_KEYWORD))
