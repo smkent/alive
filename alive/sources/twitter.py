@@ -17,10 +17,16 @@ class Twitter(Source):
         self._twitter = None
         if 'twitter' not in self.config or not self.config.twitter:
             raise Exception('No Twitter configuration is present')
-        self.usernames = self.config.twitter.get('username')
-        if isinstance(self.usernames, str):
-            self.usernames = [self.usernames]
-        self.keyword = self.config.twitter.get('keyword', DEFAULT_KEYWORD)
+        self.usernames = self._list(self.config.twitter.get('username'))
+        self.keywords = [
+            keyword.strip().lower() for keyword in
+            self._list(self.config.twitter.get('keyword', DEFAULT_KEYWORD))
+        ]
+        if not self.keywords:
+            raise Exception('No Twitter keyword(s) are configured')
+
+    def _list(self, value):
+        return list(value) if isinstance(value, (list, tuple)) else [value]
 
     @property
     def _client(self):
@@ -47,7 +53,7 @@ class Twitter(Source):
                 continue
 
             tweet_keyword, tweet_action = tweet.full_text.split(' ', 1)
-            if tweet_keyword.strip().lower() != self.keyword:
+            if tweet_keyword.strip().lower() not in self.keywords:
                 continue
             is_test = (tweet_action and
                        tweet_action.split()[0].lower() == 'test')
