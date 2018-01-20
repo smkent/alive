@@ -37,7 +37,7 @@ alive provides two executables:
 
 alive requires:
 * Python 3
-* `pipenv` for virtualenv creation and dependency installation
+* [pipenv][pipenv] for virtualenv creation and dependency installation
 * A [Twitter API key][twitter-api] and an application-specific access token.
   Refer to the Twitter API documentation for more information.
 * cron for checking for tweets
@@ -45,8 +45,8 @@ alive requires:
 
 ## Installation
 
-alive uses `pipenv` to manage its virtualenv and dependencies. Install
-`pipenv`:
+alive uses [pipenv][pipenv] to manage its virtualenv and dependencies. Install
+pipenv:
 
 ```shell
 $ pip install pipenv
@@ -178,5 +178,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 See [`LICENSE`](/LICENSE) for the full license text.
 
 [gnupg]: https://www.gnupg.org/
+[pipenv]: https://github.com/pypa/pipenv
 [twitter-api]: https://apps.twitter.com/
 [twitter-sms]: https://help.twitter.com/en/using-twitter/supported-mobile-carriers
