@@ -13,6 +13,10 @@ I chose this architecture as text messages are one of, if not the lowest
 bandwidth form of network communication commonly available, and as such is most
 likely to be available in a limited access situation.
 
+This tool works best when deployed in a different geographic location than where
+you live, to increase the chances that it will be available following a local
+natural disaster.
+
 ## Dependencies and usage overview
 
 Once installed and configured, alive's outgoing email message can be triggered
